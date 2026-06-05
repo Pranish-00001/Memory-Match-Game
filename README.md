@@ -52,5 +52,6 @@ python main.py
 - Card flip animations
 - Custom card themes
 
+## NOTE: Find screenshots in the assets
 ## Author
 Pranish Khanal

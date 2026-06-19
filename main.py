@@ -1,6 +1,8 @@
 import random
 import pygame
 from timer import GameTimer
+from gameMenu import Menu
+
 
 from card import Card
 
@@ -11,6 +13,8 @@ HEIGHT = 600
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Memory Match")
+
+menu = Menu() # Adding a menu object.
 
 BUTTON_WIDTH = 220
 BUTTON_HEIGHT = 60
@@ -97,6 +101,24 @@ while running:
 
             mouse_pos = pygame.mouse.get_pos()
             
+
+
+            #Menu clicks handling
+            action = menu.handle_click(mouse_pos)
+            if action == "restart":
+                cards = new_game()
+                first_card = None
+                second_card = None
+
+                flip_time = 0
+
+                game_won = False
+
+                timer = GameTimer()
+                timer.start()
+
+            elif action == "quit":
+                running = False
             
             if game_won:
 
@@ -235,7 +257,7 @@ while running:
 
         
 
-
+    menu.draw(screen)
     pygame.display.flip()
 
 pygame.quit()
